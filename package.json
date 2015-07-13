@@ -1,0 +1,23 @@
+{
+  "name": "autofocus.js",
+  "description": "Autofocusing inputs for stuff like contact forms and newsletter signups increases signups.",
+  "version": "1.0.0",
+  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "bugs": {
+    "url": "https://github.com/andyet/autofocus.js/issues"
+  },
+  "devDependencies": {
+    "uglify-js": "^2.4.23"
+  },
+  "homepage": "https://github.com/andyet/autofocus.js#readme",
+  "license": "MIT",
+  "main": "autofocus.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyet/autofocus.js.git"
+  },
+  "scripts": {
+    "build": "uglifyjs --compress -- autofocus.js > autofocus.min.js"
+  }
+}
