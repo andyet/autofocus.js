@@ -1,6 +1,7 @@
 // docs here: https://github.com/andyet/autofocus.js
+/* global autofocus*/
 (function () {
-  function debounce(fn, val) {
+  function debounce (fn, val) {
     var timer
     return function () {
       var args = arguments
@@ -12,24 +13,26 @@
   }
 
   function isElementInViewport (el) {
-    var rect = el.getBoundingClientRect();
+    var rect = el.getBoundingClientRect()
 
     return (
       rect.top >= 0 &&
       rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     )
   }
 
-  function focusWhenFirstVisible(inputElement) {
+  function focusWhenFirstVisible (inputElement) {
     var hasFocused = false
-    window.addEventListener('scroll', debounce(function (e) {
+    function focusIfVisible () {
       if (!hasFocused && isElementInViewport(inputElement)) {
         inputElement.focus()
         hasFocused = true
       }
-    }, 100))
+    }
+    window.addEventListener('scroll', debounce(focusIfVisible, 100))
+    focusIfVisible()
   }
 
   window.focusWhenFirstVisible = focusWhenFirstVisible
